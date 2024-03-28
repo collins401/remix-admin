@@ -19,7 +19,6 @@ module.exports = {
     commonjs: true,
     es6: true,
   },
-  ignorePatterns: ["!**/.server", "!**/.client"],
 
   // Base config
   extends: ["eslint:recommended"],
@@ -48,6 +47,13 @@ module.exports = {
           typescript: {},
         },
       },
+      rules: {
+        'jsx-a11y/click-events-have-key-events': 'off',
+        'jsx-a11y/no-noninteractive-element-interactions': 'off',
+        'jsx-a11y/no-static-element-interactions': 'off',
+        'jsx-a11y/anchor-is-valid': 'off',
+        'react/display-name': 'off',
+      }
     },
 
     // Typescript
@@ -71,6 +77,9 @@ module.exports = {
         "plugin:import/recommended",
         "plugin:import/typescript",
       ],
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off'
+      }
     },
 
     // Node

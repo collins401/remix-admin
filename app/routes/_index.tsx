@@ -1,5 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
-
+import { Button } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+import { Link } from "@remix-run/react";
 export const meta: MetaFunction = () => {
   return [
     { title: "New Remix SPA" },
@@ -10,14 +12,14 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix (SPA Mode)</h1>
+      <h1 className="text-red-600">Welcome to Remix (SPA Mode)</h1>
+      <Button type="primary" icon={<PlusOutlined />}>
+        按钮
+      </Button>
+
       <ul>
         <li>
-          <a
-            target="_blank"
-            href="https://remix.run/future/spa-mode"
-            rel="noreferrer"
-          >
+          <a target="_blank" href="https://remix.run/future/spa-mode" rel="noreferrer">
             SPA Mode Guide
           </a>
         </li>
@@ -27,6 +29,7 @@ export default function Index() {
           </a>
         </li>
       </ul>
+      <Link to="/login">TO LOGIN</Link>
     </div>
   );
 }
