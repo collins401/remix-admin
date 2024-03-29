@@ -57,15 +57,7 @@ export default function BasicLayout() {
             }}
           />
         </Header>
-        <Content
-          style={{
-            margin: 16,
-            padding: 20,
-            minHeight: 280,
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
-          }}
-        >
+        <Content className="m-4">
           <Outlet />
         </Content>
       </Layout>
