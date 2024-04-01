@@ -1,20 +1,22 @@
-import React from "react";
+import type { LinksFunction } from "@remix-run/node";
 import {
+  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-  isRouteErrorResponse,
   useLocation,
   useRouteError,
 } from "@remix-run/react";
-import ThemeProvider from "./ThemeProvider";
-import BasicLayout from "./layout";
+import React from "react";
 import { setup } from "goober";
-import { LinksFunction } from "@remix-run/node";
+import BasicLayout from "./layout";
 import styles from "./style.css?url";
+import ThemeProvider from "./ThemeProvider";
+
 import { ADMIN_LAYOUT_RED_LIST } from "~/lib/config";
+
 setup(React.createElement);
 
 export const links: LinksFunction = () => {
@@ -27,6 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
         <Meta />
         <Links />
       </head>

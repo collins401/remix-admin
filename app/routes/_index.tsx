@@ -1,7 +1,8 @@
-import { Button } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
 import { Link } from "@remix-run/react";
+import { PlusOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 import { styled } from "goober";
+
 import bg from "~/assets/images/bg.svg";
 
 const Welcome = styled("div")`
@@ -33,23 +34,18 @@ export default function Index() {
           </Button>
         </div>
       </Welcome>
-      <h1 className="text-red-600">Welcome to Remix (SPA Mode)</h1>
+      <h1 className="text-primary text-lg m-4 font-semibold">Welcome to Remix (SPA Mode)</h1>
+      <p className="text-color font-[600]">默认文字</p>
+      <p className="text-color/85">默认文字</p>
+      <p className="text-color/60">默认文字</p>
+      <p className="text-color/30">默认文字</p>
       <Button type="primary" icon={<PlusOutlined />}>
         按钮
       </Button>
+      <div>
+        <Link to="/list">to list</Link>
+      </div>
 
-      <ul>
-        <li>
-          <a target="_blank" href="https://remix.run/future/spa-mode" rel="noreferrer">
-            SPA Mode Guide
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
       <Link to="/login">TO LOGIN</Link>
     </div>
   );

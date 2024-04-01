@@ -1,10 +1,10 @@
 import { atom } from 'jotai';
-import request from '~/lib/request';
+
+import request from '~/lib/ofetch';
 
 // 用户接口返回的数据
 export const userInfoAtom = atom(async () => {
   const res = await request('/getInfo');
-  console.log(res);
   return res;
 });
 

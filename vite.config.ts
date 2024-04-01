@@ -1,8 +1,7 @@
 import { vitePlugin as remix } from "@remix-run/dev";
-import { defineConfig } from "vite";
+import tailwindcss from '@tailwindcss/vite';
 import { flatRoutes } from 'remix-flat-routes';
-import tailwindcss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
+import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
@@ -17,11 +16,9 @@ export default defineConfig({
       }
     }),
     tsconfigPaths(),
+    tailwindcss()
   ],
   css: {
-    postcss: {
-      plugins: [tailwindcss(), autoprefixer({})]
-    },
     preprocessorOptions: {
       less: {
         javascriptEnabled: true

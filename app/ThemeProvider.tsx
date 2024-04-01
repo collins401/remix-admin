@@ -1,7 +1,8 @@
-import { ConfigProvider, ThemeConfig, theme, App } from "antd";
-import zh_CN from "antd/lib/locale/zh_CN";
 import "dayjs/locale/zh-cn";
+import { App, ConfigProvider, theme, ThemeConfig } from "antd";
+import zh_CN from "antd/lib/locale/zh_CN";
 import { useAtomValue } from "jotai";
+
 import { darkModeAtom } from "~/atoms/app";
 import { COLOR_PRIMARY } from "~/lib/config";
 
@@ -15,10 +16,10 @@ export const themeConfig: ThemeConfig = {
     Menu: {
       itemBg: "#fff",
       itemSelectedBg: "rgba(11,96,176,.2)",
-      darkItemBg: "#000000",
+      darkItemBg: "#141414",
     },
     Layout: {
-      siderBg: "#ededed",
+      siderBg: "#fff",
     },
   },
   token: {

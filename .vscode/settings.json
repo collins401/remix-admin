@@ -3,7 +3,7 @@
   "prettier.enable": true,
   "prettier.tabWidth": 2,
   "prettier.endOfLine": "auto",
-  "prettier.quoteProps": "as-needed",
-  "prettier.singleQuote": true,
-  "prettier.jsxSingleQuote": false
+  // "prettier.quoteProps": "as-needed",
+  // "prettier.singleQuote": false,
+  // "prettier.jsxSingleQuote": false
 }

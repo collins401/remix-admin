@@ -1,5 +1,6 @@
 import { atom } from 'jotai';
 import { atomFamily } from 'jotai/utils';
+
 import { getDictListByType } from '~/routes/system+/api';
 
 const dictCacheAtom = atom<Map<string, any>>(new Map());

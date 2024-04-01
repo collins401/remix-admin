@@ -48,18 +48,18 @@ module.exports = {
         },
       },
       rules: {
-        'jsx-a11y/click-events-have-key-events': 'off',
-        'jsx-a11y/no-noninteractive-element-interactions': 'off',
-        'jsx-a11y/no-static-element-interactions': 'off',
-        'jsx-a11y/anchor-is-valid': 'off',
-        'react/display-name': 'off',
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
+        "jsx-a11y/anchor-is-valid": "off",
+        "react/display-name": "off",
       }
     },
 
     // Typescript
     {
       files: ["**/*.{ts,tsx}"],
-      plugins: ["@typescript-eslint", "import"],
+      plugins: ["@typescript-eslint", "simple-import-sort", "import"],
       parser: "@typescript-eslint/parser",
       settings: {
         "import/internal-regex": "^~/",
@@ -78,16 +78,41 @@ module.exports = {
         "plugin:import/typescript",
       ],
       rules: {
-        '@typescript-eslint/no-explicit-any': 'off'
+        "@typescript-eslint/no-explicit-any": "off",
+        // "simple-import-sort/imports": "error",
+        'simple-import-sort/imports': [
+          'warn',
+          {
+            groups: [
+              [
+                // Packages `react` related packages come first.
+                '^\\u0000(?!virtual)',
+                '^@remix-run/(.*)$',
+                '^react',
+                '^@?\\w',
+                // Internal packages.
+                '^(@|components)(/.*|$)',
+                // Side effect imports.
+                // '^\\u0000',
+                // Parent imports. Put `..` last.
+                '^\\.\\.(?!/?$)',
+                '^\\.\\./?$',
+                // Other relative imports. Put same-folder imports and `.` last.
+                '^\\./(?=.*/)(?!/?$)',
+                '^\\.(?!/?$)',
+                '^\\./?$'
+              ],
+              ['^virtual:(?!/?$)'],
+              // Style imports.
+              ['^.+\\.?(sc|sa|c|le)ss$']
+            ]
+          }
+        ],
+        "simple-import-sort/exports": "error",
+        "import/first": "error",
+        "import/newline-after-import": "error",
+        "import/no-duplicates": "error"
       }
     },
-
-    // Node
-    {
-      files: [".eslintrc.cjs"],
-      env: {
-        node: true,
-      },
-    },
-  ],
+  ]
 };

@@ -1,7 +1,8 @@
 import { message } from 'antd';
 import { isEmpty } from 'lodash-es';
-import { LOGIN_TOKEN_KEY } from '~/lib/config';
 import service, { errorMessage } from '../request';
+
+import { LOGIN_TOKEN_KEY } from '~/lib/config';
 
 export function getAuthorization() {
   const searchParams = new URLSearchParams(location.search);

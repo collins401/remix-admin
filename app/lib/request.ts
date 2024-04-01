@@ -1,7 +1,8 @@
+import { notification } from 'antd';
 import type { AxiosError, AxiosResponse } from 'axios';
 import axios from 'axios';
-import { notification } from 'antd';
-import { LOGIN_TOKEN_KEY, LOGIN_PAGE } from '~/lib/config';
+
+import { LOGIN_PAGE,LOGIN_TOKEN_KEY } from '~/lib/config';
 
 export const errorMessage: any = {
   '401': '认证失败，无法访问系统资源',
