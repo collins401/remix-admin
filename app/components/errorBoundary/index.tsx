@@ -1,8 +1,8 @@
-import React from "react";
-import { Button } from "antd";
-import Catch from "./boundary";
+import React from 'react'
+import { Button } from 'antd'
+import Catch from './boundary'
 
-import ERROR_IMG from "~/assets/images/error.svg";
+import ERROR_IMG from '~/assets/images/error.svg'
 
 /**
  * 包裹组件，在渲染错误的时候显示
@@ -11,13 +11,13 @@ import ERROR_IMG from "~/assets/images/error.svg";
  * </ErrorBoundary>
  */
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
-const systemUpdateFlag = "Failed to fetch dynamically";
+const systemUpdateFlag = 'Failed to fetch dynamically'
 const ErrorBoundary = Catch((props: Props, error?: Error) => {
   if (error) {
     return (
-      <div className="container mx-auto border border-[#ffccc7] p-5 bg-[#fff2f0] rounded-lg">
+      <div className="container mx-auto border border-[#ffccc7] dark:border-[#5b2526] p-5 bg-[#fff2f0] dark:bg-[#2c1618] rounded-lg">
         <div className="lg:flex  items-center">
           <div className="flex-1">
             {error.message.includes(systemUpdateFlag) ? (
@@ -30,7 +30,7 @@ const ErrorBoundary = Catch((props: Props, error?: Error) => {
                     // 清除相关缓存
                     // sessionStorage.clear()
                     // localStorage.clear()
-                    location.reload();
+                    location.reload()
                   }}
                   type="primary"
                 >
@@ -65,9 +65,9 @@ const ErrorBoundary = Catch((props: Props, error?: Error) => {
           </div>
         </div>
       </div>
-    );
+    )
   }
-  return props.children;
-});
+  return props.children
+})
 
-export default ErrorBoundary;
+export default ErrorBoundary

@@ -1,8 +1,10 @@
 import { vitePlugin as remix } from "@remix-run/dev";
-import tailwindcss from '@tailwindcss/vite';
+import autoprefixer from 'autoprefixer'
 import { flatRoutes } from 'remix-flat-routes';
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+
+import tailwindcss from 'tailwindcss'
 
 export default defineConfig({
   plugins: [
@@ -16,9 +18,11 @@ export default defineConfig({
       }
     }),
     tsconfigPaths(),
-    tailwindcss()
   ],
   css: {
+    postcss: {
+      plugins: [tailwindcss(), autoprefixer({})]
+    },
     preprocessorOptions: {
       less: {
         javascriptEnabled: true
@@ -31,6 +35,10 @@ export default defineConfig({
     proxy: {
       '/prod-api/': {
         target: 'https://vue.ruoyi.vip/',
+        changeOrigin: true
+      },
+      '/api': {
+        target: 'http://localhost:3000',
         changeOrigin: true
       }
     }

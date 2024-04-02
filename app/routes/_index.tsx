@@ -1,14 +1,13 @@
-import { Link } from "@remix-run/react";
-import { PlusOutlined } from "@ant-design/icons";
-import { Button } from "antd";
-import { styled } from "goober";
+import { Link } from '@remix-run/react'
+import { PlusOutlined } from '@ant-design/icons'
+import { Button } from 'antd'
+import { styled } from 'goober'
+import bg from '~/assets/images/bg.svg'
 
-import bg from "~/assets/images/bg.svg";
-
-const Welcome = styled("div")`
+const Welcome = styled('div')`
   position: relative;
   &:after {
-    content: "";
+    content: '';
     background-image: url(${bg});
     position: absolute;
     inset: 0px;
@@ -18,7 +17,7 @@ const Welcome = styled("div")`
     background-size: 100%;
     background-repeat: no-repeat;
   }
-`;
+`
 export default function Index() {
   return (
     <div>
@@ -48,5 +47,5 @@ export default function Index() {
 
       <Link to="/login">TO LOGIN</Link>
     </div>
-  );
+  )
 }

@@ -21,7 +21,7 @@ module.exports = {
   },
 
   // Base config
-  extends: ["eslint:recommended"],
+  extends: ["eslint:recommended", "prettier"],
 
   overrides: [
     // React
@@ -33,6 +33,7 @@ module.exports = {
         "plugin:react/jsx-runtime",
         "plugin:react-hooks/recommended",
         "plugin:jsx-a11y/recommended",
+        "prettier"
       ],
       settings: {
         react: {

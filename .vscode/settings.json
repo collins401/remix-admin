@@ -1,9 +1,5 @@
 {
   "editor.formatOnSave": true,
+  "eslint.format.enable": true,
   "prettier.enable": true,
-  "prettier.tabWidth": 2,
-  "prettier.endOfLine": "auto",
-  // "prettier.quoteProps": "as-needed",
-  // "prettier.singleQuote": false,
-  // "prettier.jsxSingleQuote": false
 }

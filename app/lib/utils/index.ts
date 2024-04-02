@@ -1,6 +1,6 @@
 import { message } from 'antd';
 import { isEmpty } from 'lodash-es';
-import service, { errorMessage } from '../request';
+import service from '../ofetch';
 
 import { LOGIN_TOKEN_KEY } from '~/lib/config';
 
@@ -18,52 +18,21 @@ export function getAuthorization() {
   }
   return Promise.reject(new Error('缺少token'));
 }
-/**
- * 参数处理
- * @param {*} params  参数
- */
-export function tansParams(params) {
-  let result = '';
-  for (const propName of Object.keys(params)) {
-    const value = params[propName];
-    const part = encodeURIComponent(propName) + '=';
-    if (value !== null && value !== '' && typeof value !== 'undefined') {
-      if (typeof value === 'object') {
-        for (const key of Object.keys(value)) {
-          if (value[key] !== null && value[key] !== '' && typeof value[key] !== 'undefined') {
-            const params = propName + '[' + key + ']';
-            const subPart = encodeURIComponent(params) + '=';
-            result += subPart + encodeURIComponent(value[key]) + '&';
-          }
-        }
-      } else {
-        result += part + encodeURIComponent(value) + '&';
-      }
-    }
-  }
-  return result;
-}
 
 // 验证是否为blob格式
-export function blobValidate(data) {
+export function blobValidate(data: Blob) {
   return data.type !== 'application/json';
 }
 // 通用下载方法
-export function downloadFile(url, params, filename?: string, config?: any) {
+export function downloadFile(url:string, params: any, filename?: string,) {
   message.loading({
     content: '正在下载数据，请稍候',
     duration: 0
   });
-  return service
-    .post(url, params, {
-      transformRequest: [
-        (params) => {
-          return tansParams(params);
-        }
-      ],
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  return service(url, {
+      method: "POST",
+      body: params,
       responseType: 'blob',
-      ...config
     })
     .then(async (data) => {
       const isBlob = blobValidate(data);
@@ -81,11 +50,8 @@ export function downloadFile(url, params, filename?: string, config?: any) {
         message.destroy();
         message.success('下载成功');
       } else {
-        const resText = await data.text?.();
-        const rspObj = JSON.parse(resText);
-        const errMsg = errorMessage[rspObj.code] || rspObj.msg || errorMessage['default'];
         message.destroy();
-        message.error(errMsg);
+        message.error('下载失败');
       }
     })
     .catch(() => {
