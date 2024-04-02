@@ -1,0 +1,31 @@
+
+#searchform:not(.no-border) {
+  .ant-form-item {
+    margin-bottom: 16px;
+    .ant-row.ant-form-item-row {
+      border: 1px solid #d9d9d9;
+      border-radius: 6px;
+      transition: border 0.2s linear;
+      &:hover {
+        border-color: #0284c7;
+      }
+      .ant-form-item-label {
+        padding-left: 10px;
+        > label::after {
+          margin-inline-end: 0;
+        }
+      }
+      .ant-input-affix-wrapper,
+      .ant-picker,
+      .ant-select-selector {
+        border: none !important;
+        box-shadow: none !important;
+      }
+      .ant-input-affix-wrapper:focus,
+      .ant-input-affix-wrapper:hover {
+        border-inline-end-width: 0;
+        box-shadow: none;
+      }
+    }
+  }
+}

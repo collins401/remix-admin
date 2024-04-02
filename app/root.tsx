@@ -10,15 +10,20 @@ import {
   useLocation,
   useRouteError
 } from '@remix-run/react'
-import React from 'react'
+import React, { createContext, useContext } from 'react'
 import { setup } from 'goober'
+import { Loading } from './components'
 import BasicLayout from './layout'
 import styles from './style.css?url'
 import ThemeProvider from './ThemeProvider'
 
-import { ADMIN_LAYOUT_RED_LIST } from '~/lib/config'
+import { ADMIN_LAYOUT_RED_LIST, COLOR_PRIMARY } from '~/lib/config'
 
-setup(React.createElement)
+const theme = { primary: COLOR_PRIMARY }
+const ThemeContext = createContext(theme)
+const useTheme = () => useContext(ThemeContext)
+
+setup(React.createElement, undefined, useTheme)
 
 export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: styles }]
@@ -80,5 +85,5 @@ export function ErrorBoundary() {
 }
 
 export function HydrateFallback() {
-  return null
+  return <Loading />
 }

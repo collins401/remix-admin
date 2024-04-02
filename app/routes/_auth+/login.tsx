@@ -39,7 +39,7 @@ export default function Login() {
   }
   return (
     <div className="flex">
-      <div className="lg:w-1/2 hidden lg:flex bg-gray-100">1</div>
+      <div className="lg:w-1/2 hidden lg:flex flex-center bg-gray-100"></div>
       <div className="flex-1 h-[100vh] flex-center  dark:bg-black">
         <div className="mx-auto rounded-md shadow-[-1px 4px 34px 0 rgba(138,185,255,.2)] p-2 md:p-10 md:pb-4  max-w-[450px]">
           <h3 className="text-center mb-5 text-xl font-500">{SITE_TITLE}</h3>
