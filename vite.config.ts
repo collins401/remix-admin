@@ -13,20 +13,15 @@ export default defineConfig({
       ignoredRouteFiles: ['**/*'],
       routes: async (defineRoutes) => {
         return flatRoutes('routes', defineRoutes, {
-          ignoredRouteFiles: ['controller.tsx'],
+          ignoredRouteFiles: ['controller.tsx', 'api.ts', 'utils.ts'],
         });
-      }
+      },
     }),
     tsconfigPaths(),
   ],
   css: {
     postcss: {
       plugins: [tailwindcss(), autoprefixer({})]
-    },
-    preprocessorOptions: {
-      less: {
-        javascriptEnabled: true
-      }
     }
   },
   server: {

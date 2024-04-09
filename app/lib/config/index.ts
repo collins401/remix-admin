@@ -1,7 +1,7 @@
 export const LOGIN_TOKEN_KEY = 'RY-ADMIN-TOKEN';
 export const SITE_TITLE = 'RY管理系统';
 // color
-export const COLOR_PRIMARY = 'rgb(11,96,176)';
+export const COLOR_PRIMARY = '#0c6eca';
 
 // route page
 export const HOME_PAGE_URL = '/';

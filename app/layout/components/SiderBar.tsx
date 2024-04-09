@@ -1,17 +1,17 @@
 import { Link, useLocation, useNavigate } from '@remix-run/react'
 import React, { useLayoutEffect, useState } from 'react'
-import { CodeOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons'
+import { CodeOutlined } from '@ant-design/icons'
 import { Layout, Menu } from 'antd'
-import { styled } from 'goober'
-import { authMenuAtom } from '~/atoms/user'
-import { useAtom } from 'jotai'
 import type { MenuProps } from 'antd/es/menu/index'
+import { styled } from 'goober'
+import { useAtom } from 'jotai'
 import { isEmpty } from 'lodash-es'
+import menuIcons from './menuIcons'
+
+import { authMenuAtom } from '~/atoms/user'
+
 type MenuItem = Required<MenuProps>['items'][number]
 
-interface IProps {
-  children?: React.ReactNode
-}
 const MenuStyle = styled(Menu)`
   .ant-menu-submenu .ant-menu-item.ant-menu-item-selected {
     background: none;
@@ -24,30 +24,20 @@ const MenuStyle = styled(Menu)`
     overflow: inherit;
   }
   .ant-menu-sub.ant-menu-inline .ant-menu-item:before {
-    border-left: 1px solid ${props => props.theme.primary};
-    height: 100%;
-    top: 0px;
+    width: 4px;
+    height: 4px !important;
+    border-radius: 100%;
+    background: gray;
     content: '';
-    left: 30px;
+    left: 38px;
+    top: 18px;
     position: absolute;
   }
-  .ant-menu-sub.ant-menu-inline .ant-menu-item:after {
-    border-top: 1px solid ${props => props.theme.primary};
-    width: 14px;
-    content: '';
-    left: 30px;
-    top: 20px;
-    opacity: 1;
-    transform: scaleY(1);
-    position: absolute;
-  }
-  .ant-menu-sub.ant-menu-inline .ant-menu-item:last-child {
-    &:before {
-      height: 50%;
-    }
+  .ant-menu-sub.ant-menu-inline .ant-menu-item-selected.ant-menu-item:before {
+    background: ${props => props.theme.primary};
   }
 `
-const SiderBar: React.FC = props => {
+const SiderBar: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false)
   const [authMenu] = useAtom(authMenuAtom)
   const [openKeys, setOpenKeys] = useState<string[]>([])
@@ -58,11 +48,11 @@ const SiderBar: React.FC = props => {
   function flatRoute(menus: any, index = 0, parentPath = '') {
     const newArray: MenuItem[] = []
     menus?.forEach((item: any) => {
-      const icons = index === 0 ? <CodeOutlined /> : null
+      const icons = index === 0 ? menuIcons.get(item.meta?.icon) ?? <CodeOutlined /> : null
       const path = parentPath + item.path
       if (!isEmpty(item.children)) {
         const child = flatRoute(item.children, index + 1, `${path}/`)
-        if (!item.hidden) {
+        if (!item.hidden && item.meta?.title !== '日志管理') {
           return newArray.push({
             icon: icons,
             key: path,
@@ -122,7 +112,9 @@ const SiderBar: React.FC = props => {
   }, [pathname])
 
   function LinkToPage(e: any) {
-    if (e.key !== pathname) {
+    if (e.key.startsWith('http')) {
+      window.open(e.key)
+    } else if (e.key !== pathname) {
       navigate(e.key)
     }
   }
@@ -135,27 +127,34 @@ const SiderBar: React.FC = props => {
   }
 
   return (
-    <Layout.Sider
-      collapsible
-      collapsed={collapsed}
-      theme="light"
-      width={230}
-      onChange={() => setCollapsed(!collapsed)}
-    >
-      <div className="flex items-center pl-5">
-        <Link to="/">
-          <img src="/logo.png" alt="" className="h-[40px]" />
-        </Link>
-      </div>
-      <MenuStyle
-        mode="inline"
-        items={flatRoute(authMenu)}
-        onClick={LinkToPage}
-        onOpenChange={openChange}
-        openKeys={openKeys}
-        selectedKeys={selectedKeys}
-      />
-    </Layout.Sider>
+    <>
+      <Layout.Sider
+        collapsible
+        collapsed={collapsed}
+        className="!fixed bottom-0 top-0"
+        theme="light"
+        width={230}
+        onChange={() => setCollapsed(!collapsed)}
+      >
+        <div className="flex items-center pl-5 h-[64px]">
+          <Link to="/" className="flex-center">
+            <img src="/logo.svg" alt="" className="h-[40px]" />
+            <span className="text-lg font-500">Rymix</span>
+          </Link>
+        </div>
+        <div className="overflow-auto max-h-[calc(100vh-120px)]">
+          <MenuStyle
+            mode="inline"
+            items={flatRoute(authMenu)}
+            onClick={LinkToPage}
+            onOpenChange={openChange}
+            openKeys={openKeys}
+            selectedKeys={selectedKeys}
+          />
+        </div>
+      </Layout.Sider>
+      <div className={collapsed ? 'w-[80px]' : 'w-[230px]'}></div>
+    </>
   )
 }
 export default SiderBar

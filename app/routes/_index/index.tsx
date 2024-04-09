@@ -2,6 +2,7 @@ import { Link } from '@remix-run/react'
 import { PlusOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
 import { styled } from 'goober'
+
 import bg from '~/assets/images/bg.svg'
 
 const Welcome = styled('div')`
@@ -33,6 +34,7 @@ export default function Index() {
           </Button>
         </div>
       </Welcome>
+      <p>默认文字样式</p>
       <h1 className="text-primary text-lg m-4 font-semibold">Welcome to Remix (SPA Mode)</h1>
       <p className="text-color font-[600]">默认文字</p>
       <p className="text-color/85">默认文字</p>
@@ -46,6 +48,7 @@ export default function Index() {
       </div>
 
       <Link to="/login">TO LOGIN</Link>
+      <div className="h-[1000px]"></div>
     </div>
   )
 }

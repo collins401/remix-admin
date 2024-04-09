@@ -15,9 +15,6 @@ export default {
         secondary: '#40A2D8', // 辅助色
         danger: 'rgb(245,34,45)' // 错误颜色
       },
-      backgroundColor: {
-        white: 'rgb(var(--bg-white))'
-      },
       textColor: {
         color: 'rgb(var(--text-color))'
       },

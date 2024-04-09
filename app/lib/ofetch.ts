@@ -1,6 +1,6 @@
 import { Modal, notification } from 'antd'
 import { ofetch } from 'ofetch'
-import { LOGIN_TOKEN_KEY } from './config'
+import { LOGIN_PAGE, LOGIN_TOKEN_KEY } from './config'
 
 export const errorMessage: any = {
   '401': '认证失败，无法访问系统资源',
@@ -10,7 +10,7 @@ export const errorMessage: any = {
 };
 
 const token = typeof localStorage !== 'undefined' ? localStorage.getItem(LOGIN_TOKEN_KEY) : '';
-
+const userCenter = ['/getInfo', '/getRouters']
 const request = ofetch.create({
   retry: 0,
   baseURL: '/prod-api',
@@ -23,15 +23,24 @@ const request = ofetch.create({
   onResponse: ({ response }) => {
     if (response.status === 200) {
       if (response._data.code === 401) {
-        Modal.confirm({
-          title: '提示信息',
-          content: '登录过期，请重新登录',
-          okButtonProps: { className: '!bg-primary'},
-          onOk: () => {
-            localStorage.removeItem(LOGIN_TOKEN_KEY)
-            window.location.href = '/login'
-          }
-        })
+        if (userCenter.some(s => response.url.includes(s))) {
+          location.href = LOGIN_PAGE
+        } else {
+          Modal.destroyAll()
+          Modal.confirm({
+            title: '提示信息',
+            content: '登录状态已过期，请重新登录',
+            okButtonProps: { className: '!bg-primary'},
+            okText: '去登录',
+            cancelText: '取消',
+            onOk: () => {
+              localStorage.clear()
+              sessionStorage.clear()
+              window.location.href = LOGIN_PAGE
+            }
+          })
+        }
+        
       }
       return response._data
     } else {

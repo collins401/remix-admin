@@ -19,8 +19,8 @@ export default function Login() {
   async function finish() {
     const values = await form.validateFields()
     setLoading(true)
-    fetch('/login', { method: 'POST', body: { ...values, uuid: captcha?.uuid } })
-      .then((res: any) => {
+    fetch('/login', { method: 'POST', body: { ...values, uuid: captcha?.uuid } }).then(
+      (res: any) => {
         if (res.code === 200) {
           localStorage.setItem(LOGIN_TOKEN_KEY, res.token)
           setTimeout(() => {
@@ -28,14 +28,12 @@ export default function Login() {
           }, 100)
         } else {
           message.error(res.msg)
+          form.setFieldValue('code', '')
+          revalidator.revalidate()
           setLoading(false)
         }
-      })
-      .catch(() => {
-        setLoading(false)
-        form.setFieldValue('code', '')
-        revalidator.revalidate()
-      })
+      }
+    )
   }
   return (
     <div className="flex">

@@ -20,6 +20,11 @@ export const authMenuAtom = atom(async () => {
     return JSON.parse(cache);
   }
   const res = await request('/getRouters');
+  res.data.push({
+    path: '/list',
+    meta: { title: '表单列表', icon: 'element'},
+    hidden: false
+  })
   localStorage.setItem('routes', JSON.stringify(res?.data));
   return res?.data || [];
 });

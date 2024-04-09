@@ -1,7 +1,7 @@
-import { SaveOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { SaveOutlined } from '@ant-design/icons'
+import { Button } from 'antd'
 
-import { PageTitle } from "~/components";
+import { PageTitle } from '~/components'
 
 export default function ListDetail() {
   return (
@@ -16,5 +16,5 @@ export default function ListDetail() {
       />
       <div className="bg-white mt-3 rounded p-4">12</div>
     </div>
-  );
+  )
 }
