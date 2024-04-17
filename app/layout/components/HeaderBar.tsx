@@ -1,7 +1,13 @@
 import { useLocation, useMatches } from '@remix-run/react'
-import { lazy, Suspense } from 'react'
-import { BellOutlined, CaretDownOutlined, MenuFoldOutlined, UserOutlined } from '@ant-design/icons'
+import React, { createElement, lazy, Suspense } from 'react'
+import {
+  BellOutlined,
+  CaretDownOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined
+} from '@ant-design/icons'
 import { Avatar, Badge, Layout, Popover, Spin, theme } from 'antd'
+import { styled } from 'goober'
 import { useAtom } from 'jotai'
 
 import { useDarkMode } from '~/atoms/app'
@@ -10,7 +16,27 @@ import { Moon, Sun } from '~/components/svgIcon'
 import { HOME_PAGE_URL } from '~/lib/config'
 
 const TodoCalendar = lazy(() => import('./TodoCalendar'))
-export default function HeaderBar() {
+const TriggerMenu = styled('div')`
+  background: #f2f2f2;
+  line-height: 24px;
+  width: 24px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 2px;
+  transition: all 0.2s linear;
+  color: #333;
+  &:hover {
+    cursor: pointer;
+    background: #dcdbdb;
+  }
+`
+interface IProps {
+  collapsed: boolean
+  onChange: (collapsed: boolean) => void
+}
+
+export default function HeaderBar(props: IProps) {
+  const { collapsed, onChange } = props
   const { darkMode, toggleDarkMode } = useDarkMode()
   const [userInfo] = useAtom(userInfoAtom)
   const { pathname } = useLocation()
@@ -31,7 +57,11 @@ export default function HeaderBar() {
     <Layout.Header style={{ padding: 0, background: colorBgContainer }}>
       <div className="flex-between px-5">
         <div>
-          <MenuFoldOutlined />
+          <TriggerMenu>
+            {createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+              onClick: () => onChange(!collapsed)
+            })}
+          </TriggerMenu>
           {pathname === HOME_PAGE_URL && <span className="text-lg font-500">Welcome~ </span>}
         </div>
         <div className="flex space-x-4 items-center h-[64px]">
@@ -53,7 +83,7 @@ export default function HeaderBar() {
               )
             }
           />
-          <Avatar size={36} style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+          <Avatar size={36} src="/avatar.jpeg" />
           <div className="text-center">
             <div className="leading-[16px] mb-1">
               {userInfo?.user?.nickName}

@@ -1,9 +1,10 @@
 import { SaveOutlined } from '@ant-design/icons'
-import { Button } from 'antd'
+import { Button, theme } from 'antd'
 
 import { PageTitle } from '~/components'
 
 export default function ListDetail() {
+  const { token } = theme.useToken()
   return (
     <div>
       <PageTitle
@@ -14,7 +15,9 @@ export default function ListDetail() {
           </Button>
         }
       />
-      <div className="bg-white mt-3 rounded p-4">12</div>
+      <div className="mt-3 rounded p-4" style={{ background: token.colorBgContainer }}>
+        12
+      </div>
     </div>
   )
 }

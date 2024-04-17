@@ -3,8 +3,9 @@ import { SearchOutlined } from '@ant-design/icons'
 import { useSize } from 'ahooks'
 import { Button, Checkbox, DatePicker, Form, Input, Radio, Select, theme } from 'antd'
 import type { FormInstance, FormProps } from 'antd/lib/form'
+import { styled } from 'goober'
 import { omit } from 'lodash-es'
-import type { SearchOption } from './types.d'
+import type { SearchOption } from './types'
 
 interface SearchConfig extends FormProps {
   options: SearchOption[]
@@ -24,6 +25,12 @@ interface SearchConfig extends FormProps {
 export type { SearchConfig, SearchOption }
 
 const { RangePicker } = DatePicker
+
+const FormStyled = styled(Form)`
+  .ant-form-item {
+    margin-bottom: 20px;
+  }
+`
 
 const SearchForm: React.FC<SearchConfig> = props => {
   const {
@@ -119,13 +126,13 @@ const SearchForm: React.FC<SearchConfig> = props => {
 
   return (
     <div className="p-6 pb-1 mb-3  rounded" style={{ background: colorBgContainer }} ref={ref}>
-      <Form
+      <FormStyled
         autoComplete="off"
         form={form}
         id="searchform"
         onFinish={finish}
-        {...formRest}
         variant="filled"
+        {...formRest}
       >
         <div
           className={`grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 gap-x-5 relative ${grid}`}
@@ -176,7 +183,7 @@ const SearchForm: React.FC<SearchConfig> = props => {
             </div>
           )}
         </div>
-      </Form>
+      </FormStyled>
     </div>
   )
 }

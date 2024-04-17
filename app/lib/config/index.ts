@@ -1,5 +1,5 @@
 export const LOGIN_TOKEN_KEY = 'RY-ADMIN-TOKEN';
-export const SITE_TITLE = 'RY管理系统';
+export const SITE_TITLE = 'Rymix管理系统';
 // color
 export const COLOR_PRIMARY = '#0c6eca';
 

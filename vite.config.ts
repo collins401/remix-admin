@@ -31,10 +31,6 @@ export default defineConfig({
       '/prod-api/': {
         target: 'https://vue.ruoyi.vip/',
         changeOrigin: true
-      },
-      '/api': {
-        target: 'http://localhost:3000',
-        changeOrigin: true
       }
     }
   }

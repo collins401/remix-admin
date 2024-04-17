@@ -10,6 +10,7 @@ import { getAuthorization } from '~/lib/utils'
 
 export default function BasicLayout() {
   const [loading, setLoading] = useState(true)
+  const [collapsed, setCollapsed] = useState(false)
   const {
     token: { colorBgContainer }
   } = theme.useToken()
@@ -27,9 +28,9 @@ export default function BasicLayout() {
 
   return (
     <Layout className="!min-h-[100vh]">
-      <SiderBar />
+      <SiderBar collapsed={collapsed} onChange={setCollapsed} />
       <Layout>
-        <HeaderBar />
+        <HeaderBar collapsed={collapsed} onChange={setCollapsed} />
         <Layout.Content className="m-4">
           <div className="container mx-auto">
             <Suspense fallback={<Loading />}>

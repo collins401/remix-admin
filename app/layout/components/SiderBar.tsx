@@ -37,8 +37,13 @@ const MenuStyle = styled(Menu)`
     background: ${props => props.theme.primary};
   }
 `
-const SiderBar: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false)
+
+interface IProps {
+  collapsed: boolean
+  onChange: (collapsed: boolean) => void
+}
+const SiderBar: React.FC<IProps> = props => {
+  const { collapsed, onChange } = props
   const [authMenu] = useAtom(authMenuAtom)
   const [openKeys, setOpenKeys] = useState<string[]>([])
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
@@ -130,16 +135,17 @@ const SiderBar: React.FC = () => {
     <>
       <Layout.Sider
         collapsible
+        trigger={null}
         collapsed={collapsed}
         className="!fixed bottom-0 top-0"
         theme="light"
         width={230}
-        onChange={() => setCollapsed(!collapsed)}
+        onChange={() => onChange(!collapsed)}
       >
         <div className="flex items-center pl-5 h-[64px]">
           <Link to="/" className="flex-center">
             <img src="/logo.svg" alt="" className="h-[40px]" />
-            <span className="text-lg font-500">Rymix</span>
+            {/* {!collapsed && <span className="text-lg font-500">Rymix</span>} */}
           </Link>
         </div>
         <div className="overflow-auto max-h-[calc(100vh-120px)]">
@@ -153,7 +159,7 @@ const SiderBar: React.FC = () => {
           />
         </div>
       </Layout.Sider>
-      <div className={collapsed ? 'w-[80px]' : 'w-[230px]'}></div>
+      <div className={collapsed ? 'w-[80px] transition-all' : 'w-[230px] transition-all'}></div>
     </>
   )
 }
