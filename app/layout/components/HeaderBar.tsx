@@ -57,11 +57,6 @@ export default function HeaderBar(props: IProps) {
     <Layout.Header style={{ padding: 0, background: colorBgContainer }}>
       <div className="flex-between px-5">
         <div>
-          <TriggerMenu>
-            {createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-              onClick: () => onChange(!collapsed)
-            })}
-          </TriggerMenu>
           {pathname === HOME_PAGE_URL && <span className="text-lg font-500">Welcome~ </span>}
         </div>
         <div className="flex space-x-4 items-center h-[64px]">

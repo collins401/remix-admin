@@ -1,10 +1,4 @@
-import {
-  Outlet,
-  useLoaderData,
-  useNavigate,
-  useRevalidator,
-  useSearchParams
-} from '@remix-run/react'
+import { useLoaderData, useRevalidator } from '@remix-run/react'
 import { Suspense, useRef, useState } from 'react'
 import { EditOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons'
 import { App, Input, Tooltip } from 'antd'

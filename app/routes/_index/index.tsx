@@ -24,31 +24,11 @@ export default function Index() {
     <div>
       <Welcome className="bg-primary p-10 rounded-lg text-white h-[250px]">
         <div className="relative z-[10]">
-          <h2 className="text-3xl mb-6"> Explore Redesigned Able Pro</h2>
-          <p className="text-base mb-8 text-white/85">
-            The Brand new User Interface with power of Material-UI Components. Explore the Endless
-            possibilities with Able Pro.
-          </p>
-          <Button type="default" ghost size="large">
-            开始定制
-          </Button>
+          <h2 className="text-3xl mb-6"> Remix Admin base Ruoyi api</h2>
+          <p className="text-base mb-8 text-white/85">Ant-design + Jotai + Tailwindcss</p>
+          <span className="inline-block py-2 px-6 border border-white rounded-full">开始定制</span>
         </div>
       </Welcome>
-      <p>默认文字样式</p>
-      <h1 className="text-primary text-lg m-4 font-semibold">Welcome to Remix (SPA Mode)</h1>
-      <p className="text-color font-[600]">默认文字</p>
-      <p className="text-color/85">默认文字</p>
-      <p className="text-color/60">默认文字</p>
-      <p className="text-color/30">默认文字</p>
-      <Button type="primary" icon={<PlusOutlined />}>
-        按钮
-      </Button>
-      <div>
-        <Link to="/list">to list</Link>
-      </div>
-
-      <Link to="/login">TO LOGIN</Link>
-      <div className="h-[1000px]"></div>
     </div>
   )
 }

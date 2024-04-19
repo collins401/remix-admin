@@ -320,7 +320,3 @@ video {
   min-height: 100%;
   position: relative;
 }
-/* dark mode */
-html.dark *, html.dark ::before, html.dark ::after {
-  border-color: #303030;
-}

@@ -1,3 +1,3 @@
 export default function Online() {
-  return <div>Monitor-Online</div>
+  return <div>Page</div>
 }

@@ -11,9 +11,6 @@ import { getAuthorization } from '~/lib/utils'
 export default function BasicLayout() {
   const [loading, setLoading] = useState(true)
   const [collapsed, setCollapsed] = useState(false)
-  const {
-    token: { colorBgContainer }
-  } = theme.useToken()
   useMount(() => {
     getAuthorization()
       .then(() => {

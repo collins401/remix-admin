@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from '@remix-run/react'
 import React, { useLayoutEffect, useState } from 'react'
-import { CodeOutlined } from '@ant-design/icons'
-import { Layout, Menu } from 'antd'
+import { CodeOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import { Layout, Menu, theme } from 'antd'
 import type { MenuProps } from 'antd/es/menu/index'
 import { styled } from 'goober'
 import { useAtom } from 'jotai'
@@ -49,6 +49,7 @@ const SiderBar: React.FC<IProps> = props => {
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
   const { pathname } = useLocation()
   const navigate = useNavigate()
+  const { token } = theme.useToken()
 
   function flatRoute(menus: any, index = 0, parentPath = '') {
     const newArray: MenuItem[] = []
@@ -157,6 +158,17 @@ const SiderBar: React.FC<IProps> = props => {
             openKeys={openKeys}
             selectedKeys={selectedKeys}
           />
+        </div>
+        <div
+          className="border-t absolute bottom-0 w-full left-0 px-3 py-2"
+          style={{ borderColor: token.colorBorder }}
+        >
+          <span
+            onClick={() => onChange(!collapsed)}
+            className="inline-block cursor-pointer hover:opacity-80 rounded bg-slate-200 dark:bg-white/20 px-2 h-[28px] leading-[28px]"
+          >
+            {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+          </span>
         </div>
       </Layout.Sider>
       <div className={collapsed ? 'w-[80px] transition-all' : 'w-[230px] transition-all'}></div>
