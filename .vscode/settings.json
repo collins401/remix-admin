@@ -2,4 +2,5 @@
   "editor.formatOnSave": true,
   "eslint.format.enable": true,
   "prettier.enable": true,
+  "eslint.experimental.useFlatConfig": true
 }

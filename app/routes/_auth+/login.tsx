@@ -10,12 +10,20 @@ import fetch from '~/lib/ofetch'
 
 const FormStyle = styled(Form)`
   /* 去除input自动填充的背景颜色 */
+  input {
+    background-clip: content-box !important;
+    &::first-line {
+      color: white !important; // 设置输入内容的样式
+    }
+    -webkit-text-fill-color: #dcfdff; // 改变了字体颜色
+  }
   input:-webkit-autofill {
     box-shadow: 0 0 0 1000px transparent inset !important;
   }
   input::-internal-autofill-previewed,
   input::-internal-autofill-selected {
     transition: background-color 5000s ease-in-out 0s !important;
+    background-image: none !important;
   }
 `
 export const clientLoader = async () => {

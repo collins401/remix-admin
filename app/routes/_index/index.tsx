@@ -1,6 +1,3 @@
-import { Link } from '@remix-run/react'
-import { PlusOutlined } from '@ant-design/icons'
-import { Button } from 'antd'
 import { styled } from 'goober'
 
 import bg from '~/assets/images/bg.svg'

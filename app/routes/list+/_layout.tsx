@@ -22,7 +22,7 @@ const getTableData = ({ current, pageSize }: any, formData: any): Promise<any> =
 export default function List() {
   const [form] = Form.useForm()
   const { token } = theme.useToken()
-  const { tableProps, loading, search } = useAntdTable(getTableData)
+  const { search } = useAntdTable(getTableData)
   const options: SearchOption[] = [
     { label: '订单号', name: 'orderNo', itemType: 'input' },
     { label: '业主电话', name: 'ownerPhone', itemType: 'select', options: [] },

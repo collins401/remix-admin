@@ -11,7 +11,7 @@ export default defineConfig({
     remix({
       ssr: false,
       ignoredRouteFiles: ['**/*'],
-      routes: async (defineRoutes) => {
+      routes: (defineRoutes) => {
         return flatRoutes('routes', defineRoutes, {
           ignoredRouteFiles: ['controller.tsx', 'api.ts', 'utils.ts'],
         });

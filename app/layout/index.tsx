@@ -1,7 +1,7 @@
 import { Outlet } from '@remix-run/react'
 import { Suspense, useState } from 'react'
 import { useMount } from 'ahooks'
-import { Alert, Layout, theme } from 'antd'
+import { Layout } from 'antd'
 import HeaderBar from './components/HeaderBar'
 import SiderBar from './components/SiderBar'
 

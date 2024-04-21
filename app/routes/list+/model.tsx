@@ -1,7 +1,7 @@
 import { Form, redirect, useNavigate } from '@remix-run/react'
 import { Modal } from 'antd'
 
-export async function cliendLoader() {
+export function cliendLoader() {
   // your code
   return redirect('/list/model')
 }
@@ -17,7 +17,7 @@ export default function MemberDisableRoute() {
             Cancel
           </button>
           <Form method="POST">
-            <input name="id" value="id" hidden />
+            <input name="id" value="id" />
             <button className="btn">Yes</button>
           </Form>
         </div>

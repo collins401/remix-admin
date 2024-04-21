@@ -34,7 +34,7 @@ export function downloadFile(url:string, params: any, filename?: string,) {
       body: params,
       responseType: 'blob',
     })
-    .then(async (data) => {
+    .then((data) => {
       const isBlob = blobValidate(data);
       if (isBlob) {
         const blob = new Blob([data], { type: 'application/vnd.ms-excel' });

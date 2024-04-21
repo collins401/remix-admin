@@ -19,7 +19,7 @@ const request = ofetch.create({
     Authorization: `Bearer ${token}`
   },
   credentials: 'include',
-  onRequest: (config: any) => {},
+  onRequest: () => {},
   onResponse: ({ response }) => {
     if (response.status === 200) {
       if (response._data.code === 401) {
@@ -53,9 +53,8 @@ const request = ofetch.create({
       });
     }
   },
-  async onResponseError({ request, response }) {
+  onResponseError({ response }) {
     // Log error
-    console.log('onResponseError', response)
     if (response?.status) {
       const { status, statusText } = response;
       const errorText = errorMessage[status] || statusText;

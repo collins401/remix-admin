@@ -1,13 +1,7 @@
-import { useLocation, useMatches } from '@remix-run/react'
-import React, { createElement, lazy, Suspense } from 'react'
-import {
-  BellOutlined,
-  CaretDownOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined
-} from '@ant-design/icons'
+import { useLocation } from '@remix-run/react'
+import { lazy, Suspense } from 'react'
+import { BellOutlined, CaretDownOutlined } from '@ant-design/icons'
 import { Avatar, Badge, Layout, Popover, Spin, theme } from 'antd'
-import { styled } from 'goober'
 import { useAtom } from 'jotai'
 
 import { useDarkMode } from '~/atoms/app'
@@ -16,32 +10,11 @@ import { Moon, Sun } from '~/components/svgIcon'
 import { HOME_PAGE_URL } from '~/lib/config'
 
 const TodoCalendar = lazy(() => import('./TodoCalendar'))
-const TriggerMenu = styled('div')`
-  background: #f2f2f2;
-  line-height: 24px;
-  width: 24px;
-  font-size: 18px;
-  text-align: center;
-  border-radius: 2px;
-  transition: all 0.2s linear;
-  color: #333;
-  &:hover {
-    cursor: pointer;
-    background: #dcdbdb;
-  }
-`
-interface IProps {
-  collapsed: boolean
-  onChange: (collapsed: boolean) => void
-}
 
-export default function HeaderBar(props: IProps) {
-  const { collapsed, onChange } = props
+export default function HeaderBar() {
   const { darkMode, toggleDarkMode } = useDarkMode()
   const [userInfo] = useAtom(userInfoAtom)
   const { pathname } = useLocation()
-  const m = useMatches()
-  // console.log(m)
   const {
     token: { colorBgContainer }
   } = theme.useToken()
@@ -78,7 +51,7 @@ export default function HeaderBar(props: IProps) {
               )
             }
           />
-          <Avatar size={36} src="/avatar.jpeg" />
+          <Avatar size={36} src="/avatar.jpg" />
           <div className="text-center">
             <div className="leading-[16px] mb-1">
               {userInfo?.user?.nickName}
