@@ -1,3 +1,4 @@
+import { Link } from '@remix-run/react'
 import { styled } from 'goober'
 
 import bg from '~/assets/images/bg.svg'
@@ -22,10 +23,10 @@ export default function Index() {
       <Welcome className="bg-primary p-10 rounded-lg text-white h-[250px]">
         <div className="relative z-[10]">
           <h2 className="text-3xl mb-6">
-            Remix-Admin{' '}
+            Remix-Admin
             <span className="text-xl text-white/60">(SPA Mode base Ruoyi api style)</span>
           </h2>
-          <p className="text-base text-white/80">Basic tech: Ant Design5.x + Jotai + Tailwindcss</p>
+          <p className="text-base text-white/80">Basic tech: Ant Design5.x + Tailwindcss + Jotai</p>
           <p className="text-base text-white/80 mb-8">
             Other plugin: remix-flat-routes,ofetch,ahooks,goober
           </p>
@@ -34,6 +35,7 @@ export default function Index() {
           </span>
         </div>
       </Welcome>
+      <Link to="/login">to login</Link>
     </div>
   )
 }

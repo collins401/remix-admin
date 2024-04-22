@@ -1,10 +1,9 @@
-import { Link, Outlet, useLoaderData, useRevalidator } from '@remix-run/react'
+import { Link, useLoaderData, useRevalidator } from '@remix-run/react'
 import { useState } from 'react'
 import { LockOutlined, SafetyCertificateOutlined, UserOutlined } from '@ant-design/icons'
-import { App, Button, ConfigProvider, Form, Input, theme } from 'antd'
+import { App, Button, ConfigProvider, Form, Input } from 'antd'
 import { styled } from 'goober'
 
-import placeholder from '~/assets/images/placeholder.svg'
 import { LOGIN_TOKEN_KEY, SITE_TITLE } from '~/lib/config'
 import fetch from '~/lib/ofetch'
 

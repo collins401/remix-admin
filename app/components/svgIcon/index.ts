@@ -1,5 +1,7 @@
+export { default as Check } from './check'
 export { default as Element } from './element'
 export { default as Link } from './link'
+export { default as Plus } from './plus'
 export { default as Monitor} from './monito'
 export { default as Moon} from './moon'
 export { default as Setting} from './setting'

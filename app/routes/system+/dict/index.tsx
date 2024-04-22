@@ -17,12 +17,11 @@ interface DictType {
   createTime: string
 }
 export const clientLoader = async () => {
-  const res = await getDictTypeList()
-  return res.rows
+  return await getDictTypeList()
 }
 
 export default function Dict() {
-  const dictTypeList = useLoaderData<typeof clientLoader>()
+  const { rows: dictTypeList } = useLoaderData<typeof clientLoader>()
   const { message, modal } = App.useApp()
   const revalidate = useRevalidator()
   const [keyword, setKeyword] = useState('')
@@ -69,7 +68,7 @@ export default function Dict() {
   return (
     <>
       <div className="flex">
-        <div className="w-260px mr-2.5 bg-white dark:bg-[#141414]">
+        <div className="w-260px mr-2.5 bg-white dark:bg-[#141414] rounded">
           <div className="flex m-3 mb-0 items-center space-x-3 p-0-1-1">
             <Input
               className="flex-1"
@@ -79,7 +78,7 @@ export default function Dict() {
             />
             <Tooltip placement="top" title="新增类型">
               <PlusOutlined
-                className="text-primary cursor-pointer"
+                className="text-primary cursor-pointer font-500"
                 onClick={() => settingDictType()}
               />
             </Tooltip>

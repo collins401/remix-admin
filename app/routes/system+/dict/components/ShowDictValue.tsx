@@ -6,6 +6,7 @@ import { delDictValue } from '../../api'
 import SettingDictValue, { SettingDictValueRefType } from './SettingDictValue'
 
 import { dictAtomFamily } from '~/atoms/dict'
+import { PlusOutlined } from '@ant-design/icons'
 
 interface DictRecordType {
   dictCode: number
@@ -78,7 +79,7 @@ export default function ShowDictValue({ dictType }: { dictType: string }) {
   return (
     <div className="mt-3">
       <div className="text-right mb-4">
-        <Button onClick={() => setDictValue()} type="primary">
+        <Button onClick={() => setDictValue()} type="primary" icon={<PlusOutlined />}>
           新增字典
         </Button>
       </div>

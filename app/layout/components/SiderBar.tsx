@@ -76,7 +76,17 @@ const SiderBar: React.FC<IProps> = props => {
         return newArray.push({
           icon: icons,
           key: path,
-          label: item.meta.title
+          label: (
+            <Link
+              to={path}
+              prefetch="intent"
+              className="text-color block"
+              target={path.startsWith('http') ? '_blank' : ''}
+              rel="noreferrer"
+            >
+              {item.meta.title}
+            </Link>
+          )
         })
       }
     })
@@ -144,11 +154,12 @@ const SiderBar: React.FC<IProps> = props => {
         trigger={null}
         collapsed={collapsed}
         className="!fixed bottom-0 top-0"
+        style={{ boxShadow: '2px 0px 10px #EDEDED' }}
         theme="light"
         width={230}
         onChange={() => onChange(!collapsed)}
       >
-        <div className="flex items-center pl-5 h-[64px]">
+        <div className="flex items-center pl-4 h-[64px] border-b">
           <Link to="/" className="flex-center">
             {/* <img src="/logo.svg" alt="" className="h-[40px]" /> */}
             {collapsed && <span className="text-xl font-500">Rymix</span>}
