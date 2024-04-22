@@ -36,6 +36,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
+        <title>Rymix管理系统</title>
         <Meta />
         <Links />
       </head>

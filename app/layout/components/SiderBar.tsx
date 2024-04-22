@@ -9,12 +9,13 @@ import { isEmpty } from 'lodash-es'
 import menuIcons from './menuIcons'
 
 import { authMenuAtom } from '~/atoms/user'
+import { SITE_TITLE } from '~/lib/config'
 
 type MenuItem = Required<MenuProps>['items'][number]
 
 const MenuStyle = styled(Menu)`
   .ant-menu-submenu .ant-menu-item.ant-menu-item-selected {
-    background: none;
+    /* background: none; */
   }
   &.ant-menu-light.ant-menu-root.ant-menu-inline {
     border-inline-end: none;
@@ -32,6 +33,10 @@ const MenuStyle = styled(Menu)`
     left: 38px;
     top: 18px;
     position: absolute;
+  }
+  .ant-menu-submenu-title .ant-menu-item-icon + span,
+  .ant-menu-item .ant-menu-item-icon + span {
+    margin-inline-start: 4px;
   }
   .ant-menu-sub.ant-menu-inline .ant-menu-item-selected.ant-menu-item:before {
     background: ${props => props.theme.primary};
@@ -145,8 +150,13 @@ const SiderBar: React.FC<IProps> = props => {
       >
         <div className="flex items-center pl-5 h-[64px]">
           <Link to="/" className="flex-center">
-            <img src="/logo.svg" alt="" className="h-[40px]" />
-            {/* {!collapsed && <span className="text-lg font-500">Rymix</span>} */}
+            {/* <img src="/logo.svg" alt="" className="h-[40px]" /> */}
+            {collapsed && <span className="text-xl font-500">Rymix</span>}
+            {!collapsed && (
+              <span className="text-xl font-500 overflow-hidden inline-block h-[30px]">
+                {SITE_TITLE}
+              </span>
+            )}
           </Link>
         </div>
         <div className="overflow-auto max-h-[calc(100vh-120px)]">

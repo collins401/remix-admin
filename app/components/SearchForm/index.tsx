@@ -138,30 +138,12 @@ const SearchForm: React.FC<SearchConfig> = props => {
           className={`grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 gap-x-5 relative ${grid}`}
         >
           {itemOptions.map((item, i) => {
-            const restItem: any = omit(item, [
-              'fieldProps',
-              'options',
-              'itemType',
-              'hidden',
-              'list'
-            ])
-            if (item.hidden) {
-              return (
-                <Form.Item key={i} noStyle shouldUpdate>
-                  {({ getFieldValue }) =>
-                    getFieldValue([item.hidden[0]]) !== item.hidden[1] && (
-                      <Form.Item {...restItem}>{itemRender(item)}</Form.Item>
-                    )
-                  }
-                </Form.Item>
-              )
-            } else {
-              return (
-                <Form.Item key={item.name} {...restItem}>
-                  {itemRender(item)}
-                </Form.Item>
-              )
-            }
+            const restItem: any = omit(item, ['fieldProps', 'options', 'itemType'])
+            return (
+              <Form.Item key={item.name} {...restItem}>
+                {itemRender(item)}
+              </Form.Item>
+            )
           })}
           {children}
           {!hideBtn && (

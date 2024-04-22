@@ -21,9 +21,17 @@ export default function Index() {
     <div>
       <Welcome className="bg-primary p-10 rounded-lg text-white h-[250px]">
         <div className="relative z-[10]">
-          <h2 className="text-3xl mb-6"> Remix Admin base Ruoyi api</h2>
-          <p className="text-base mb-8 text-white/85">Ant-design + Jotai + Tailwindcss</p>
-          <span className="inline-block py-2 px-6 border border-white rounded-full">开始定制</span>
+          <h2 className="text-3xl mb-6">
+            Remix-Admin{' '}
+            <span className="text-xl text-white/60">(SPA Mode base Ruoyi api style)</span>
+          </h2>
+          <p className="text-base text-white/80">Basic tech: Ant Design5.x + Jotai + Tailwindcss</p>
+          <p className="text-base text-white/80 mb-8">
+            Other plugin: remix-flat-routes,ofetch,ahooks,goober
+          </p>
+          <span className="inline-block py-2 px-6 border border-white rounded-full text-xl cursor-pointer hover:opacity-45">
+            Get Started
+          </span>
         </div>
       </Welcome>
     </div>

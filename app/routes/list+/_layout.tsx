@@ -5,6 +5,7 @@ import { getUserList } from '../system+/api'
 
 import code1 from '~/assets/images/code1.png'
 import SearchForm, { SearchOption } from '~/components/searchForm'
+import { useState } from 'react'
 
 const getTableData = ({ current, pageSize }: any, formData: any): Promise<any> => {
   const params = {
@@ -18,34 +19,44 @@ const getTableData = ({ current, pageSize }: any, formData: any): Promise<any> =
     list: res.rows
   }))
 }
-
+const status = [
+  { value: '1', label: '开始' },
+  { value: '0', label: '停止' }
+]
 export default function List() {
   const [form] = Form.useForm()
   const { token } = theme.useToken()
   const { search } = useAntdTable(getTableData)
+  const [variant, setVariant] = useState<any>('outlined')
   const options: SearchOption[] = [
     { label: '订单号', name: 'orderNo', itemType: 'input' },
-    { label: '业主电话', name: 'ownerPhone', itemType: 'select', options: [] },
-    { label: '业主姓名', name: 'ownerName', itemType: 'input' },
-    { label: '业主姓名1', name: 'ownerName2', itemType: 'rangePicker' }
+    { label: '状态1', name: 'ownerPhone', itemType: 'select', options: status },
+    { label: '业主姓名1', name: 'ownerName2', itemType: 'rangePicker', hidden: true },
+    { label: '状态2', name: 'ownerName', itemType: 'radio', options: status }
   ]
-  const tabs = ['常规搜索', '联动搜索', '展开/折叠', '动态数据']
+  const tabs = ['outlined', 'filled', 'borderless', 'remixPro']
+  const preCode = `<SearchForm form={form} options={options} onChange={search.submit} variant="${variant}" />`
   return (
     <div className="p-3 rounded" style={{ background: token.colorBgContainer }}>
       <Segmented<string>
         options={tabs}
         onChange={value => {
           console.log(value) // string
+          setVariant(value)
         }}
       />
-      <SearchForm form={form} options={options} onChange={search.submit} variant="outlined" />
+      <SearchForm form={form} options={options} onChange={search.submit} variant={variant} />
       <h3>代码实现：</h3>
-      <div style={{ background: token.colorFillAlter }} className="">
-        <img src={code1} alt="code1" />
-      </div>
-      <Link to="/list/model">to detail</Link>
-      <Outlet />
+      <pre className="bg-black text-white rounded p-2">
+        const [form] = Form.useForm()
+        <br />
+        const options = {JSON.stringify(options, null, 2)}
+        <br />
+        return ({preCode}
+        ...)
+      </pre>
       <div className=" p-10">12</div>
+      <Outlet />
     </div>
   )
 }

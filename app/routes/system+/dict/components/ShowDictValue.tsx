@@ -18,7 +18,6 @@ export default function ShowDictValue({ dictType }: { dictType: string }) {
   const { modal, message } = App.useApp()
   const [dict, updateDict] = useAtom(dictAtomFamily(dictType))
   const dictValueRef = useRef<SettingDictValueRefType>(null)
-
   function delDictValueFun(item: DictRecordType) {
     modal.confirm({
       title: '系统提示',
