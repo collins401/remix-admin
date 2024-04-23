@@ -27,15 +27,13 @@ export default function BasicLayout() {
     <Layout className="!min-h-[100vh]">
       <SiderBar collapsed={collapsed} onChange={setCollapsed} />
       <Layout>
-        <HeaderBar collapsed={collapsed} onChange={setCollapsed} />
+        <HeaderBar />
         <Layout.Content className="m-4">
-          <div className="container mx-auto">
-            <Suspense fallback={<Loading />}>
-              <ErrorBoundary>
-                <Outlet />
-              </ErrorBoundary>
-            </Suspense>
-          </div>
+          <Suspense fallback={<Loading />}>
+            <ErrorBoundary>
+              <Outlet />
+            </ErrorBoundary>
+          </Suspense>
         </Layout.Content>
       </Layout>
     </Layout>

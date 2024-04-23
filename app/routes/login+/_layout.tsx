@@ -8,7 +8,7 @@ export default function Login() {
   return (
     <div className="flex">
       <div className="md:w-2/5 hidden md:flex items-center justify-center bg-[#EAEAEA] flex-reverse">
-        <img src={placeholder} alt="placeholder" />
+        <img src={placeholder} alt="placeholder" className="object-none" />
       </div>
       <div className="flex-1 h-[100vh] flex-center" style={{ background: token.colorBgContainer }}>
         <Outlet />

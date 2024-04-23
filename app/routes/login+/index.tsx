@@ -58,10 +58,10 @@ export default function Register() {
   }
   return (
     <div className="">
-      <div className="mx-auto rounded-md shadow-[-1px 4px 34px 0 rgba(138,185,255,.2)] p-2 md:p-10 md:pb-4  max-w-[450px]">
+      <div className="mx-auto rounded-md shadow-[-1px 4px 34px 0 rgba(138,185,255,.2)] p-2 md:pb-4 min-w-[400px] max-w-[500px]">
         <div className="text-3xl text-center text-primary font-500 mb-14">
           <div className="inline-block relative">
-            <span className="absolute left-10 bottom-0 h-[12px] bg-orange-200 -right-2 inline-block rounded-md"></span>
+            <span className="absolute left-4 bottom-0 h-[12px] bg-orange-200 -right-2 inline-block rounded-md"></span>
             <span className="relative z-1">🙌欢迎使用 {SITE_TITLE}</span>
           </div>
         </div>
