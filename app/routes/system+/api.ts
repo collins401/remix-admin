@@ -3,6 +3,7 @@ import request from '~/lib/ofetch'
 export interface IResponse {
   code: string | number
   msg: string
+  rows: any
   [propsName: string]: any
 }
 

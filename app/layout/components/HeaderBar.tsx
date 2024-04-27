@@ -30,7 +30,7 @@ import { HOME_PAGE_URL } from '~/lib/config'
 const TodoCalendar = lazy(() => import('./TodoCalendar'))
 
 export default function HeaderBar() {
-  const { modal, message } = App.useApp()
+  const { modal } = App.useApp()
   const { darkMode, toggleDarkMode } = useDarkMode()
   const [userInfo] = useAtom(userInfoAtom)
   const { pathname } = useLocation()
@@ -87,26 +87,18 @@ export default function HeaderBar() {
         </div>
         <div className="flex space-x-4 items-center h-[64px]">
           <Tooltip title="源码地址" placement="bottom">
-            <Avatar size={36} icon={<GithubOutlined />} onClick={goGithub} />
+            <GithubOutlined className="text-[18px]" onClick={goGithub} />
           </Tooltip>
           <Popover content={content()} placement="bottomRight" arrow={false}>
-            <Avatar size={36}>
-              <Badge size="small" dot>
-                <BellOutlined className="text-lg hover:text-primary" />
-              </Badge>
-            </Avatar>
+            <Badge size="small" dot>
+              <BellOutlined className="text-lg hover:text-primary" />
+            </Badge>
           </Popover>
-          <Avatar
-            size={36}
-            onClick={toggleDarkMode}
-            icon={
-              darkMode === 'dark' ? (
-                <Sun fill="currentColor" className="text-white size-[20px]" />
-              ) : (
-                <Moon fill="currentColor" className="text-black size-[20px]" />
-              )
-            }
-          />
+          {darkMode === 'dark' ? (
+            <Sun fill="currentColor" onClick={toggleDarkMode} className="text-white size-[20px]" />
+          ) : (
+            <Moon fill="currentColor" onClick={toggleDarkMode} className="text-black size-[20px]" />
+          )}
           <Avatar size={36} src="/avatar.jpg" />
           <Dropdown menu={{ items, onClick }} trigger={['click']}>
             <div className="text-center cursor-pointer">

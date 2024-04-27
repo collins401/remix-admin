@@ -18,6 +18,9 @@ export default {
       textColor: {
         color: 'rgb(var(--text-color))'
       },
+      backgroundColor: {
+        white: 'rgb(var(--bg-white))'
+,     },
       fontWeight: {
         400: '400',
         500: '500',

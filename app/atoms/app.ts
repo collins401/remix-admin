@@ -15,7 +15,7 @@ export const useDarkMode = () => {
 
   const [darkMode, setDarkMode] = useAtom(darkModeAtom)
   useEffect(() => {
-    document.documentElement.classList.add(darkMode)
+    document.documentElement.className = darkMode
   }, [])
   const toggleDarkMode = () => {
     const val = darkMode === 'light' ? 'dark' : 'light'

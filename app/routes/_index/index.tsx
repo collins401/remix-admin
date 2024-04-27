@@ -1,4 +1,3 @@
-import { Link } from '@remix-run/react'
 import { styled } from 'goober'
 
 import bg from '~/assets/images/bg.svg'
@@ -35,7 +34,6 @@ export default function Index() {
           </span>
         </div>
       </Welcome>
-      <Link to="/login">to login</Link>
     </div>
   )
 }

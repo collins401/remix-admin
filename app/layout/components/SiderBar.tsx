@@ -135,8 +135,6 @@ const SiderBar: React.FC<IProps> = props => {
   function LinkToPage(e: any) {
     if (e.key.startsWith('http')) {
       window.open(e.key)
-    } else if (e.key !== pathname) {
-      navigate(e.key)
     }
   }
   function openChange(e) {
@@ -154,20 +152,19 @@ const SiderBar: React.FC<IProps> = props => {
         trigger={null}
         collapsed={collapsed}
         className="!fixed bottom-0 top-0"
-        style={{ boxShadow: '2px 0px 10px #EDEDED' }}
         theme="light"
         width={230}
         onChange={() => onChange(!collapsed)}
       >
         <div className="flex items-center pl-4 h-[64px] border-b">
           <Link to="/" className="flex-center">
-            {/* <img src="/logo.svg" alt="" className="h-[40px]" /> */}
-            {collapsed && <span className="text-xl font-500">Rymix</span>}
+            <img src="/React.png" alt="" className="h-[64px]" />
+            {/* {collapsed && <span className="text-xl font-500">Rymix</span>}
             {!collapsed && (
               <span className="text-xl font-500 overflow-hidden inline-block h-[30px]">
                 {SITE_TITLE}
               </span>
-            )}
+            )} */}
           </Link>
         </div>
         <div className="overflow-auto max-h-[calc(100vh-120px)]">
@@ -180,10 +177,7 @@ const SiderBar: React.FC<IProps> = props => {
             selectedKeys={selectedKeys}
           />
         </div>
-        <div
-          className="border-t absolute bottom-0 w-full left-0 px-3 py-2"
-          style={{ borderColor: token.colorBorder }}
-        >
+        <div className="border-t absolute bottom-0 w-full left-0 px-3 py-2">
           <span
             onClick={() => onChange(!collapsed)}
             className="inline-block cursor-pointer hover:opacity-80 rounded bg-slate-200 dark:bg-white/20 px-2 h-[28px] leading-[28px]"

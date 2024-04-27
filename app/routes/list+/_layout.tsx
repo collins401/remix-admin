@@ -1,9 +1,8 @@
-import { Link, Outlet } from '@remix-run/react'
+import { Outlet } from '@remix-run/react'
 import { useAntdTable } from 'ahooks'
-import { Form, Segmented, theme } from 'antd'
+import { Form, Segmented } from 'antd'
 import { getUserList } from '../system+/api'
 
-import code1 from '~/assets/images/code1.png'
 import SearchForm, { SearchOption } from '~/components/searchForm'
 import { useState } from 'react'
 
@@ -25,7 +24,6 @@ const status = [
 ]
 export default function List() {
   const [form] = Form.useForm()
-  const { token } = theme.useToken()
   const { search } = useAntdTable(getTableData)
   const [variant, setVariant] = useState<any>('outlined')
   const options: SearchOption[] = [
@@ -37,7 +35,7 @@ export default function List() {
   const tabs = ['outlined', 'filled', 'borderless', 'remixPro']
   const preCode = `<SearchForm form={form} options={options} onChange={search.submit} variant="${variant}" />`
   return (
-    <div className="p-3 rounded" style={{ background: token.colorBgContainer }}>
+    <div className="p-3 rounded bg-white">
       <Segmented<string>
         options={tabs}
         onChange={value => {

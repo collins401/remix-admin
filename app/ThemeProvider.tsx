@@ -37,15 +37,31 @@ interface ThemeProviderProps {
 }
 export default function ThemeProvider({ children }: ThemeProviderProps) {
   const darkModes = useAtomValue(darkModeAtom)
+  function toggleColor(): any {
+    if (darkModes === 'dark') {
+      return {
+        '--border-color': '#424242',
+        '--bg-white': '20 20 20',
+        '--text-color': '255 255 255'
+      }
+    } else {
+      return {
+        '--border-color': '#d9d9d9',
+        '--bg-white': '255 255 255',
+        '--text-color': '0 0 0'
+      }
+    }
+  }
   return (
     <ConfigProvider
       locale={zh_CN}
+      input={{ autoComplete: 'off' }}
       theme={{
         algorithm: darkModes === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
         ...themeConfig
       }}
     >
-      <App>{children}</App>
+      <App style={toggleColor()}>{children}</App>
     </ConfigProvider>
   )
 }

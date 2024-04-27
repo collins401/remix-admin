@@ -16,12 +16,14 @@ interface DictType {
   remark: string
   createTime: string
 }
-export const clientLoader = async () => {
+export async function clientLoader() {
   return await getDictTypeList()
 }
+clientLoader.hydrate = true
 
 export default function Dict() {
   const { rows: dictTypeList } = useLoaderData<typeof clientLoader>()
+
   const { message, modal } = App.useApp()
   const revalidate = useRevalidator()
   const [keyword, setKeyword] = useState('')
@@ -68,8 +70,8 @@ export default function Dict() {
   return (
     <>
       <div className="flex">
-        <div className="w-260px mr-2.5 bg-white dark:bg-[#141414] rounded">
-          <div className="flex m-3 mb-0 items-center space-x-3 p-0-1-1">
+        <div className="w-260px mr-4 bg-white rounded">
+          <div className="flex m-3 mb-2 items-center space-x-3">
             <Input
               className="flex-1"
               onChange={e => setKeyword(e.target.value)}
@@ -85,7 +87,7 @@ export default function Dict() {
           </div>
           <div className="mx-3 pb-2 max-h-[calc(100vh-170px)] overflow-auto">
             {dictTypeList
-              ?.filter(s => s.dictName.indexOf(keyword) !== -1)
+              ?.filter(s => s.dictName?.indexOf(keyword) !== -1)
               ?.map(item => (
                 <div
                   className={`leading-9 group my-1 flex-between px-2 rounded cursor-pointer hover:bg-gray-100 dark:hover:bg-black ${
