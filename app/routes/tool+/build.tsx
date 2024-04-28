@@ -1,3 +1,3 @@
 export default function ToolBuild() {
-  return <div>ToolBuild</div>
+	return <div>ToolBuild</div>;
 }

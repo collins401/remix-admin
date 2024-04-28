@@ -1,3 +1,3 @@
 export default function Notice() {
-  return <div>notice</div>
+	return <div>notice</div>;
 }

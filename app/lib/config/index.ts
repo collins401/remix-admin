@@ -5,6 +5,6 @@ export const COLOR_PRIMARY = '#0c6eca';
 
 // route page
 export const HOME_PAGE_URL = '/';
-export const LOGIN_PAGE = '/login'
-export const ADMIN_LAYOUT_RED_LIST = ['/login', '/404']
+export const LOGIN_PAGE = '/login';
+export const ADMIN_LAYOUT_RED_LIST = ['/login', '/404'];
 export const TAB_ROUTER_START = ['/system/dict'];

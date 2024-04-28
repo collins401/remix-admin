@@ -1,3 +1,3 @@
 export default function LogIndex() {
-  return <div>log system</div>
+	return <div>log system</div>;
 }

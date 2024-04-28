@@ -1,3 +1,3 @@
 export default function ForgotPwd() {
-  return <div className="">ForgotPwd</div>
+	return <div className="">ForgotPwd</div>;
 }

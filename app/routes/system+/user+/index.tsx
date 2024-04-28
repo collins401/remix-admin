@@ -1,3 +1,3 @@
 export default function UserIndex() {
-  return <div></div>
+	return <div></div>;
 }
