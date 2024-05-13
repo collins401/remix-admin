@@ -276,3 +276,7 @@ video {
   min-height: 100%;
   position: relative;
 }
+/* ant design */
+.ant-modal .ant-modal-header + .ant-modal-body {
+  margin-top: 20px;
+} 

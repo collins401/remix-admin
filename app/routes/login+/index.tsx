@@ -46,10 +46,10 @@ export default function Register() {
 		setLoading(true);
 		fetch('/login', {
 			method: 'POST',
-			body: { ...values, uuid: captcha?.uuid },
+			body: {...values, uuid: captcha.uuid },
 		}).then((res: any) => {
 			if (res.code === 200) {
-				localStorage.setItem(LOGIN_TOKEN_KEY, res.token);
+				localStorage.setItem(LOGIN_TOKEN_KEY, res.data.token);
 				setTimeout(() => {
 					window.location.href = '/';
 				}, 100);
@@ -104,7 +104,7 @@ export default function Register() {
 								prefix={<LockOutlined className="text-primary text-lg" />}
 							/>
 						</Form.Item>
-						<div className="flex">
+						{captcha.captchaEnabled && <div className="flex">
 							<div className="flex-1">
 								<Form.Item
 									name="code"
@@ -128,7 +128,7 @@ export default function Register() {
 									/>
 								)}
 							</div>
-						</div>
+						</div>}
 						<Form.Item>
 							<Button
 								block

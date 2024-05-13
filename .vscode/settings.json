@@ -1,5 +1,6 @@
 {
 	"editor.formatOnSave": true,
+  "prettier.enable": false,
   "editor.codeActionsOnSave": {
     "source.organizeImports.biome": "explicit"
   },

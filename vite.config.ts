@@ -3,7 +3,6 @@ import autoprefixer from "autoprefixer";
 import { flatRoutes } from "remix-flat-routes";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-
 import tailwindcss from "tailwindcss";
 
 export default defineConfig({
@@ -29,7 +28,7 @@ export default defineConfig({
 		open: true,
 		proxy: {
 			"/prod-api/": {
-				target: "https://vue.ruoyi.vip/",
+				target: "https://nest-admin.dooring.vip/",
 				changeOrigin: true,
 			},
 		},

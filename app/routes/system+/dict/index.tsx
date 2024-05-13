@@ -19,18 +19,19 @@ interface DictType {
 	createTime: string;
 }
 export async function clientLoader() {
-	return await getDictTypeList();
+	const res = await getDictTypeList();
+  return res.data.list
 }
 clientLoader.hydrate = true;
 
 export default function Dict() {
-	const { rows: dictTypeList } = useLoaderData<typeof clientLoader>();
+	const dictTypeList = useLoaderData<typeof clientLoader>();
 
 	const { message, modal } = App.useApp();
 	const revalidate = useRevalidator();
 	const [keyword, setKeyword] = useState('');
 	const [selectedDictType, setSelectedDictType] = useState<DictType>(
-		dictTypeList[0],
+		dictTypeList?.[0],
 	);
 	const dictRef = useRef<SettingDictTypeRefType>(null);
 

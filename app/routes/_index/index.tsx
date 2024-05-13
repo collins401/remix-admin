@@ -38,6 +38,9 @@ export default function Index() {
 					</span>
 				</div>
 			</Welcome>
+      <svg className="svg-icon" aria-hidden="true">
+          <use href="back" />
+        </svg>
 		</div>
 	);
 }

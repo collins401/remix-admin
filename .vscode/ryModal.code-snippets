@@ -1,0 +1,28 @@
+{
+  "ruoyi Modal模板文件": {
+    "prefix": "ryModal+",
+    // "scope": "typescript,javascript",
+    "body": [
+      "import NiceModal, { useModal } from \"@ebay/nice-modal-react\";",
+      "import { Modal } from \"antd\";\n",
+      "interface ModalProps {",
+      "\tname: string;",
+      "}",
+      "export default NiceModal.create(({ name }: ModalProps) => {",
+      "\tconst modal = useModal();",
+      "\treturn (",
+      "\t\t<Modal",
+      "\t\t\ttitle=\"Hello Antd\"",
+      "\t\t\tonOk={() => modal.hide()}",
+      "\t\t\topen={modal.visible}",
+      "\t\t\tonCancel={() => modal.hide()}",
+      "\t\t\tafterClose={() => modal.remove()}",
+      "\t\t>",
+      "\t\t\tHello {name}!",
+      "\t\t</Modal>",
+      "\t);",
+      "});\n"
+    ],
+    "description": "ruoyi Modal模板文件模板文件"
+  }
+}
