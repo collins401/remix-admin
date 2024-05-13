@@ -1,8 +1,4 @@
-import {
-	LockOutlined,
-	SafetyCertificateOutlined,
-	UserOutlined,
-} from '@ant-design/icons';
+import { LockOutlined, SafetyCertificateOutlined, UserOutlined } from '@ant-design/icons';
 import { Link, useLoaderData, useRevalidator } from '@remix-run/react';
 import { App, Button, ConfigProvider, Form, Input } from 'antd';
 import { styled } from 'goober';
@@ -46,7 +42,7 @@ export default function Register() {
 		setLoading(true);
 		fetch('/login', {
 			method: 'POST',
-			body: {...values, uuid: captcha.uuid },
+			body: { ...values, uuid: captcha.uuid },
 		}).then((res: any) => {
 			if (res.code === 200) {
 				localStorage.setItem(LOGIN_TOKEN_KEY, res.data.token);
@@ -70,9 +66,7 @@ export default function Register() {
 						<span className="relative z-1">🙌欢迎使用 {SITE_TITLE}</span>
 					</div>
 				</div>
-				<ConfigProvider
-					theme={{ token: { borderRadius: 4, lineHeightLG: 2.61 } }}
-				>
+				<ConfigProvider theme={{ token: { borderRadius: 4, lineHeightLG: 2.61 } }}>
 					<FormStyle
 						variant="filled"
 						autoComplete="off"
@@ -84,10 +78,7 @@ export default function Register() {
 							password: 'admin123',
 						}}
 					>
-						<Form.Item
-							name="username"
-							rules={[{ required: true, message: '请输入用户码' }]}
-						>
+						<Form.Item name="username" rules={[{ required: true, message: '请输入用户码' }]}>
 							<Input
 								placeholder="请输入用户名"
 								prefix={<UserOutlined className="text-primary text-lg" />}
@@ -95,48 +86,36 @@ export default function Register() {
 								// style={{ backgroundClip: 'content-box' }}
 							/>
 						</Form.Item>
-						<Form.Item
-							name="password"
-							rules={[{ required: true, message: '请输入密码' }]}
-						>
+						<Form.Item name="password" rules={[{ required: true, message: '请输入密码' }]}>
 							<Input.Password
 								placeholder="输入密码"
 								prefix={<LockOutlined className="text-primary text-lg" />}
 							/>
 						</Form.Item>
-						{captcha.captchaEnabled && <div className="flex">
-							<div className="flex-1">
-								<Form.Item
-									name="code"
-									rules={[{ required: true, message: '请输入验证码' }]}
-								>
-									<Input
-										placeholder="请输入验证码"
-										prefix={
-											<SafetyCertificateOutlined className="text-primary text-lg" />
-										}
-									/>
-								</Form.Item>
+						{captcha.captchaEnabled && (
+							<div className="flex">
+								<div className="flex-1">
+									<Form.Item name="code" rules={[{ required: true, message: '请输入验证码' }]}>
+										<Input
+											placeholder="请输入验证码"
+											prefix={<SafetyCertificateOutlined className="text-primary text-lg" />}
+										/>
+									</Form.Item>
+								</div>
+								<div className="w-[96px] ml-2">
+									{captcha?.img && (
+										<img
+											alt="captcha"
+											className="h-[52px]"
+											onClick={() => revalidator.revalidate()}
+											src={`data:image/gif;base64,${captcha?.img}`}
+										/>
+									)}
+								</div>
 							</div>
-							<div className="w-[96px] ml-2">
-								{captcha?.img && (
-									<img
-										alt="captcha"
-										className="h-[52px]"
-										onClick={() => revalidator.revalidate()}
-										src={`data:image/gif;base64,${captcha?.img}`}
-									/>
-								)}
-							</div>
-						</div>}
+						)}
 						<Form.Item>
-							<Button
-								block
-								htmlType="submit"
-								loading={loading}
-								type="primary"
-								className="h-[52px]"
-							>
+							<Button block htmlType="submit" loading={loading} type="primary" className="h-[52px]">
 								登录
 							</Button>
 						</Form.Item>

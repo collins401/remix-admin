@@ -1,4 +1,3 @@
-import NiceModal from "@ebay/nice-modal-react";
 import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
@@ -12,7 +11,7 @@ import {
   useRouteError,
 } from "@remix-run/react";
 import { setup } from "goober";
-import React, { Suspense, createContext, useContext } from "react";
+import React, { createContext, useContext } from "react";
 import ThemeProvider from "./ThemeProvider";
 import { Loading } from "./components";
 import BasicLayout from "./layout";

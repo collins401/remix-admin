@@ -1,6 +1,6 @@
 {
-  "ruoyi Modal模板文件": {
-    "prefix": "ryModal+",
+  "@ebay Modal模板文件": {
+    "prefix": "ebayModal+",
     // "scope": "typescript,javascript",
     "body": [
       "import NiceModal, { useModal } from \"@ebay/nice-modal-react\";",
@@ -23,6 +23,6 @@
       "\t);",
       "});\n"
     ],
-    "description": "ruoyi Modal模板文件模板文件"
+    "description": "@ebay Modal模板文件模板文件"
   }
 }
