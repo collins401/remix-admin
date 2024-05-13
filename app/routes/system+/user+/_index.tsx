@@ -34,7 +34,7 @@ interface Result {
 export default function UserList() {
   const go = useNavigate();
   const [form] = Form.useForm();
-  const [sys_normal_disable] = useAtom(dictAtomFamily("sys_normal_disable"));
+  // const [sys_normal_disable] = useAtom(dictAtomFamily("sys_normal_disable"));
   const settingModal = useModal(SettingModal);
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const { tableProps, search } = useAntdTable(

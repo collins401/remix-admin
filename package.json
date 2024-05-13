@@ -52,7 +52,8 @@
 	"lint-staged": {
 		"**.js|ts|cjs|mjs|d.cts|d.mts|jsx|tsx|json|jsonc": [
 			"biome check --files-ignore-unknown=true",
-			"biome check --apply ./app"
+			"biome format --write --files-ignore-unknown=true",
+			"git add"
 		]
 	}
 }

@@ -32,7 +32,6 @@ interface Result {
   total: number;
   list: RecordType[];
 }
-
 export default function UserList() {
   const go = useNavigate();
   const [form] = Form.useForm();

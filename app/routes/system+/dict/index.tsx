@@ -27,7 +27,6 @@ clientLoader.hydrate = true;
 
 export default function Dict() {
   const dictTypeList = useLoaderData<typeof clientLoader>();
-
   const { message, modal } = App.useApp();
   const revalidate = useRevalidator();
   const [keyword, setKeyword] = useState("");
