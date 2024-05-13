@@ -15,10 +15,6 @@ export const userInfoAtom = atom(async () => {
 
 // 菜单权限接口
 export const authMenuAtom = atom(async () => {
-	const cache = localStorage.getItem('routes');
-	if (cache) {
-		return JSON.parse(cache);
-	}
 	const res = await request('/getRouters');
 	res.data.splice(
 		3,
@@ -36,7 +32,5 @@ export const authMenuAtom = atom(async () => {
 			name: 'Check',
 		},
 	);
-	console.log(res?.data);
-	localStorage.setItem('routes', JSON.stringify(res?.data));
 	return res?.data || [];
 });

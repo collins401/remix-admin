@@ -9,10 +9,7 @@ export const errorMessage: any = {
 	default: '系统未知错误，请反馈给管理员',
 };
 
-const token =
-	typeof localStorage !== 'undefined'
-		? localStorage.getItem(LOGIN_TOKEN_KEY)
-		: '';
+const token = typeof localStorage !== 'undefined' ? localStorage.getItem(LOGIN_TOKEN_KEY) : '';
 const userCenter = ['/getInfo', '/getRouters'];
 const request = ofetch.create({
 	retry: 0,
@@ -26,23 +23,24 @@ const request = ofetch.create({
 	onResponse: ({ response }) => {
 		if (response.status === 200) {
 			if (response._data.code === 401) {
-				if (userCenter.some((s) => response.url.includes(s))) {
-					location.href = LOGIN_PAGE;
-				} else {
-					Modal.destroyAll();
-					Modal.confirm({
-						title: '提示信息',
-						content: '登录状态已过期，请重新登录',
-						okButtonProps: { className: '!bg-primary' },
-						okText: '去登录',
-						cancelText: '取消',
-						onOk: () => {
-							localStorage.clear();
-							sessionStorage.clear();
-							window.location.href = LOGIN_PAGE;
-						},
-					});
-				}
+				location.href = LOGIN_PAGE;
+				// if (userCenter.some((s) => response.url.includes(s))) {
+				// 	location.href = LOGIN_PAGE;
+				// } else {
+				// 	Modal.destroyAll();
+				// 	Modal.confirm({
+				// 		title: '提示信息',
+				// 		content: '登录状态已过期，请重新登录',
+				// 		okButtonProps: { className: '!bg-primary' },
+				// 		okText: '去登录',
+				// 		cancelText: '取消',
+				// 		onOk: () => {
+				// 			localStorage.clear();
+				// 			sessionStorage.clear();
+				// 			window.location.href = LOGIN_PAGE;
+				// 		},
+				// 	});
+				// }
 			}
 			return response._data;
 		}
